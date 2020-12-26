@@ -1,4 +1,6 @@
-# Pigeon Color Theme
+# Pigeon
+
+A color theme for Windows Terminal, Notepad++, IntelliJ IDEA, still in development.
 
 ## Pigeon Dark
 
@@ -16,7 +18,7 @@ Pigeon Light 主题仍在开发状态。
 
 ### Pigeon Light Color Pallette
 
-TODO:
+TODO
 
 ### Pigeon Light Sample Application
 

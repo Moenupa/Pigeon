@@ -10,8 +10,8 @@ import java.util.Hashtable;
 
 public class TicTacToe
 {
-	/**
-	 * @keywordError
+    /**
+     * @keywordError
 	 * @param args: none
 	 */
 	public static void main(String[] args)
@@ -21,7 +21,16 @@ public class TicTacToe
 	}
 	
 	private int[][] marks;
-	private int[][] wins;
+	private int[][] wins = new int[][] { // winning conditions	
+				{7,8,9},
+				{4,5,6},
+				{1,2,3},
+				{7,4,1},
+				{8,5,2},
+				{9,6,3},
+				{7,5,3},
+				{9,5,1}
+		};
 	private int[] weights;
 	private char[][] grid;
 	private final int knotcount=3;
