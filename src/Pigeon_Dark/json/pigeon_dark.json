@@ -1,0 +1,23 @@
+{
+    "name": "Pigeon Dark",
+    "author": "Moenupa",
+
+    "foreground": "#D4D4D4",
+    "background": "#1E1E1E",
+
+    "currentLineBackground": "2E2E2E",
+    "selectionBackground": "#3E3E3E",
+
+    "cursorColor": "#EFEFEF",
+
+    "_darkBlack":   "       ", "black":        "#1E1E1E", "brightBlack":  "#3E3E3E",
+    "darkRed":      "#754242", "red":          "#CC6666", "brightRed":    "#FF8080",
+    "darkGreen":    "#567542", "green":        "#8FCC66", "brightGreen":  "#B2FF80",
+    "darkYellow":   "#756B42", "yellow":       "#CCB866", "brightYellow": "#FFE680",
+    "darkBlue":     "#426075", "blue":         "#66A3CC", "brightBlue":   "#80CCFF",
+    "darkPurple":   "#6B4275", "purple":       "#B866CC", "brightPurple": "#E680FF",
+    "darkCyan":     "#427560", "cyan":         "#66CCA3", "brightCyan":   "#80FFCC",
+    "_darkWhite":   "       ", "white":        "#D4D4D4", "brightWhite":  "#EFEFEF",
+    
+    "darkGray":     "#666666", "gray":         "#999999", "brightGray":   "#A6A6A6"
+}

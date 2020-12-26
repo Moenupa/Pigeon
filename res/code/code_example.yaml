@@ -1,0 +1,40 @@
+defaults: &defaults
+   adapter:  postgres
+   host:     localhost
+   ip: 120.35.45.64
+
+development:
+   database: myapp_development
+   <<: *defaults
+
+test:
+   database: myapp_test
+   <<: *defaults
+   
+---
+# A list of tasty fruits
+- Apple
+- Orange
+- Strawberry
+- Mango
+...
+
+include_newlines: |
+            exactly as you see
+            will appear these three
+            lines of poetry
+
+fold_newlines: >
+            this is really a
+            single line of text
+            despite appearances
+            
+#ERROR HERE
+foo: somebody said I should put a colon here: so I did
+
+windows_drive: c:
+#BUT THIS WORKS
+windows_path: c:\windows
+foo: "{{ variable }}/additional/string/literal"
+foo2: "{{ variable }}\\backslashes\\are\\also\\special\\characters"
+foo3: "even if it's just a string literal it must all be quoted"

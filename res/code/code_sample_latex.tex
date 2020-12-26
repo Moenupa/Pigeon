@@ -1,0 +1,204 @@
+\documentclass[12pt]{article}
+\title{A Sample \LaTeX\ Document}
+\author{Math 300}
+\usepackage{graphicx}
+
+\begin{document}
+\maketitle
+
+
+\section{Typing Text}
+Since \LaTeX\ is a markup language, any text we
+type appears on the page, unless it contains
+one of the nine reserved characters of \LaTeX, listed
+below.
+\begin{verbatim}
+\ { } & _ ^ % ~ #
+\end{verbatim}
+If we want those characters to appear on the page, we
+must precede them by a backslash, or, in the special
+case of the backslash itself, we must use the 
+command \verb(\verb(.  In math mode, we can use the command
+\verb(\backslash(.
+
+Note that there are three kinds of dash-objects.  Hyphens 
+are very short, and are typed the way you would expect, using
+"-".  Dashes, as in the range 1--2, are wider, and are typed
+using \verb+--+.  If you feel a need for a wide---dash, you can
+use \verb+---+.
+
+\section{Units}
+Lengths in \LaTeX\ can be given in a number of Units.\\
+\begin{tabular}{ll}
+cm & Centimeters\\
+em & The width of the letter M in the current font\\
+ex & The height of the letter x in the current font\\
+in & Inches\\
+pc & Picas (1pc = 12pt)\\
+pt & Points (1in = 72pt)\\
+mm & Millimeters
+\end{tabular}
+
+\section{Space}
+The most direct way to make spaces is simply to use the
+\verb(\hspace( and \verb(\vspace( commands, for horizontal
+and vertical space, respectively.  Each takes one
+argument: a distance specification for the size of the space.
+The width or height of the space can be positive {\em or}
+negative.  Note that \verb(\vspace( can only be used in 
+vertical mode; that is, when you are starting a new paragraph
+or starting a float or doing something else that shifts text
+vertically.  It will not work in a line.
+
+\LaTeX\ also has a number of predefined spaces.  To produce a
+space with fixed width, and which cannot be used as a line break,
+you may use the \verb(~( character.  This would typically be used
+to separate initials of an author, or in other situations where
+we don't want to have a single letter or initial ending a line.
+More often, we don't mind a line break, and want the space to shrink
+or grow according to the justification requirements on the line.
+In that case we make a standard space using \verb(\ (; backslash-space.
+
+There are wider stretchy spaces available to us: \verb(\quad( and 
+\verb(\qquad(.  There is also a ``thin space'': \verb(\,(.
+The following words are separated by a thin space, a standard space,
+a quad, and a qquad, respectively.
+
+\begin{center}
+space\,space\ space\quad{space}\qquad{space}
+\end{center}
+
+There are also predefined vertical spaces: \verb(\smallskip(
+\verb(\medskip(, and \verb(\bigskip(, that behave as their
+names imply.
+
+There are also some exceptionally stretchy spaces that we can 
+use to push text around.  For example, the following line is 
+set using the command \verb(text\hfill text(.  The line below it 
+was set using \verb(text\hfill text\hfill text(.\\
+{text\hfill text}\\
+text\hfill text\hfill text\\
+You get the idea: \verb(\hfill( makes enough space to fill the line
+in question completely.  If more than one \verb(\hfill( appears
+on a line, then the two negotiate over how much space they each get.
+
+\section{Lines and Boxes}
+There are a variety of ways to make lines and boxes in \LaTeX.
+The most basic is to make a horizontal rule using \verb(\hrule(.
+\hrule
+\verb(\hrule( makes a new line, and fills it up with a horizontal line.
+If you don't want an entire line, you can use \verb(\hrulefill(, as
+in \hrulefill.\\
+This command works like \verb(\hfill(, but instead of filling with
+space, it uses a horizontal rule to fill the line.
+
+To make a box around some content, you can use the \verb(\framebox(
+command.  The framebox command puts a box around its argument,
+so that \verb(\framebox{text}( looks like \framebox{text}. It takes
+optional width and position arguments, so that
+\verb(\framebox[3in][l]{text}(
+appears as \\
+\framebox[3in][l]{text}.
+
+$E=mc^2$
+
+\section{Margins}
+This section is mistitled.  \LaTeX\ does not really do margins,
+so much as it places text.  It uses several variables in placing the
+text, which we can set.  For example, to make the left margin on
+all even-numbered pages 0.5 inches wider than the default (which is 
+1 inch), we would define\\
+\verb(\evensidemargin=0.5in(.\\
+A list of the variables we can set and their default values follows.
+\begin{verbatim}
+\evensidemargin
+\oddsidemargin
+\topmargin
+\textwidth
+\textheight
+\parskip
+\baselineskip
+\end{verbatim}
+
+\section{Tables}
+Sometimes we need to typeset tables.  For example, 
+consider Table \ref{animaltable}.  
+Any resemblance of the numbers in 
+Table \ref{animaltable} to those from any authentic poll is purely coincidental.
+\begin{table}
+\begin{center}
+\caption{\label{animaltable}
+Results from a poll that probably never happened.}
+\begin{tabular}{||l|c||}
+\hline
+\cline{1-2}
+\multicolumn{2}{||l||}{{\it What is your favorite animal?}}\\
+\hline
+Animal & Percentage of respondents\\
+\hline
+Dog & 43\%\\
+Cat & 44\%\\
+Schwarzenegger & 9\%\\
+We kill animals & 4\%\\
+\hline
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Figures}
+We can also put figures into our latex documents.  For example, the
+image in Figure \ref{sniper} is found at 
+{\tt http://www.math.wsu.edu/kcooper/M300/sniper.jpg}, but must
+be converted to encapsulated postscript before it can be included
+in this document.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=4in]{sniper.eps}
+\caption{\label{sniper}
+Cats take vengeance on 4\% of respondents \cite{calvin}.}
+\vfill
+\end{center}
+\end{figure}
+
+\section{Homemade commands}
+\newcommand{\dickens}[1]{It was the best of #1. It was the worst of #1.}
+\dickens{ideas}
+\LaTeX\ was conceived as a programming language.  This is what makes it
+harder to process using a wysiwyg interface, but it also allows
+us to make our own shortcuts.
+If you know that a particular expression will appear repeatedly
+in your document, you can make an abbreviation for it, or even
+a command that allows you to specify arguments.  In our case,
+the sequence ``\dickens{{\it fill in the blank}}''
+is to appear many times in this section, so we created a command
+as follows:
+\begin{verbatim}
+\newcommand{\dickens}[1]{It was the best of #1. 
+   It was the worst of #1.}
+\end{verbatim}
+This command takes one argument, which appears wherever a \#1 appears
+in the text for the command.  Thus, to typeset ``\dickens{examples}'',
+we need only to type \verb(\dickens{examples}(.
+
+\section{Citations and References}
+In technical documents there are many references to 
+typographical objects from the document, and citations
+of materials from outside the document.  \TeX\ \cite{knuth}
+and \LaTeX\ \cite{lamport} lets us keep track of those citations
+by name, rather than number.  Using the ``thebibliography'' 
+environment gives us automatic numbering of our references,
+while associating those numbers with names, so that we can
+refer to the references using the \verb(\cite( command.
+Likewise, for internal references, such as those to Figure \ref{sniper},
+we can assign labels to a counter using the \verb(\label(
+command, and refer to them using the \verb(\ref( command.
+
+\begin{thebibliography}{X}
+\bibitem{knuth} Knuth, D., {\bf The \TeX book,} Addison-Wesley, Reading, 1984.
+\bibitem{lamport} Lamport, L., {\bf \LaTeX: A Document Preparation System,}
+Addison-Wesley, Reading, 1986.
+\bibitem{calvin} Watterson, B., {\bf Homicidal Psycho Jungle Cat,}
+Andrews McMeel, New Jersey, 1994.
+\end{thebibliography}
+\end{document}

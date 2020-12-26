@@ -1,0 +1,175 @@
+; KixMacro.kix,  Version 2.00 for Windows
+; Creates a temporary batch file to store Kix
+; macro results in an environment variable
+;
+; Written by Rob van der Woude
+; http://www.robvanderwoude.com
+;
+; NOTE: This version of KixMacro.kix is NOT compatible with the
+;       previous version! The temporary batch file will now be
+;       written to a different location under a different name,
+;       so you need to modify the CALL command line following
+;       the invocation of the Kix script.
+ 
+ 
+; Check command line parameters
+IF $KixMacro = ""
+	GOTO Syntax
+ENDIF
+ 
+; Hide return codes
+REDIRECTOUTPUT( "NUL" )
+ 
+; Delete existing temporary batch file -- otherwise this
+; script would append the result to the existing file.
+IF EXIST( "%TEMP%.\_KixMacro.bat" )
+    DEL "%TEMP%.\_KixMacro.bat"
+ENDIF
+ 
+; Determine the name of the variable: if not specified, use default
+IF $VarName = ""
+	$VarName = "KixMacro"
+ENDIF
+ 
+; Create the temporary file and write the result to this file,
+; or display an error message if the file cannot be created or
+; opened with write access.
+IF OPEN( 1, "%TEMP%.\_KixMacro.bat", 5 ) = 0
+    EXECUTE( 'WRITELINE( 1, "SET $VarName=$KixMacro" )' )
+    REDIRECTOUTPUT( "" )
+$err = 0
+ELSE
+    REDIRECTOUTPUT( "" )
+    ? "Error opening temporary file, errorcode = " + @ERROR
+$err = 1
+ENDIF
+QUIT $err
+ 
+:Syntax
+CLS
+? "KixMacro.kix,  Version 2.00 for Windows"
+? "Creates a temporary batch file to store Kix"
+? "macro results in an environment variable"
+?
+? "Written by Rob van der Woude"
+? "http://www.robvanderwoude.com"
+?
+? "Usage:"
+? "    KIX32 KixMacro.kix $$KixMacro=@@macro [ $$VarName=env_var ]"
+? "    CALL %%TEMP%%.\_KixMacro.bat"
+? "Where:"
+? "    '@@macro' is any valid Kix macro name"
+? "    'env_var' is the name of the environment variable that"
+? "    will hold the value of @@macro."
+? "    If no $$VarName is specified, the default name KixMacro"
+? "    will be used."
+? "The second command calls the temporary batch file and stores"
+? "the required value in the specified environment variable."
+?
+? "Press any key . . . "
+REDIRECTOUTPUT( "NUL" )
+GET $key
+REDIRECTOUTPUT( "" )
+CLS
+? "Example:"
+? "Executing the commands:"
+?
+? "    KIX32 KixMacro.kix $$KixMacro=@@DAY $$VarName=WeekDay"
+? "    CALL %%TEMP%%.\_KixMacro.bat"
+?
+? "on friday will create a (temporary) batch file _KixMacro.bat"
+? "(in the TEMP directory) containing one command line:"
+? "SET WeekDay=Friday"
+? "By calling this temporary batch file the day of the week is"
+? "stored in the environment variable WeekDay."
+?
+? "See the Kix documentation for a list of available macros."
+?
+? "NOTE: This version of KixMacro.kix is NOT compatible with the"
+? "      previous version! The temporary batch file will now be"
+? "      written to a different location under a different name,"
+? "      so you need to modify the CALL command line following"
+? "      the invocation of the Kix script."
+?
+? "Press any key . . . "
+REDIRECTOUTPUT( "NUL" )
+GET $key
+REDIRECTOUTPUT( "" )
+QUIT 1
+
+
+If $Year = ""
+	$Year = @YEAR
+EndIf
+ 
+; Is the specified year valid?
+; Check if number and if within range
+If VarType($Year) = 1 OR VarType($Year) <> 3 OR $Year < 1752 OR $Year > 3000
+	GOTO Syntax
+EndIf
+ 
+; Calculate Easter Day using the instructions found at
+; Simon Kershaw's "KEEPING THE FEAST"
+; http://www.oremus.org/liturgy/etc/ktf/app/easter.html
+$G  = Mod( $Year, 19 ) + 1
+$S  = (( $Year - 1600 ) / 100 ) - (( $Year - 1600 ) / 400 )
+$L  = ((( $Year - 1400 ) / 100 ) * 8 ) / 25
+$P1 = Mod(( 30003 - 11 * $G + $S - $L ), 30)
+Select
+	Case $P1 = 28 AND $G > 11
+		$P = 28
+	Case $P1 = 29
+		$P = 28
+	Case 1
+		$P = $P1
+EndSelect
+$D  = Mod(( $Year + ( $Year / 4 ) - ( $Year / 100 ) + ( $Year / 400 )), 7 )
+$D1 = Mod(( 8 - $D ), 7 )
+$P2 = Mod(( 70003 + $P ), 7 )
+$X  = Mod(( 70004 - $D - $P ), 7 ) + 1
+$E  = $P + $X
+If $E < 11
+	$ED = $E + 21
+	$EM = "March"
+Else
+	$ED = $E - 10
+	$EM = "April"
+EndIf
+Select
+	Case $Year < @YEAR
+		$IS = "was"
+	Case $Year = @YEAR
+		$IS = "is"
+	Case 1
+		$IS = "will be"
+EndSelect
+ 
+; Display the result
+? "In $Year Easter Day $IS $EM $ED"
+?
+ 
+; MOD function divides $Op1 by $Op2 and returns the remainder
+Function Mod($Op1,$Op2)
+	$Mod = $Op1 - $Op2 * ( $Op1 / $Op2 )
+EndFunction
+ 
+; End of main program
+Exit 0
+ 
+ 
+:Syntax
+? "Easter.kix,  Version 1.00"
+? "Calculate the date of Easter Day for the specified year."
+?
+? "Usage:  KIX32  EASTER.KIX  [ $$YEAR=year ]"
+?
+? "Where:  year should be within the range of 1752 through 3000"
+?
+? "Written by Rob van der Woude"
+? "http://www.robvanderwoude.com"
+?
+? "Based on the instructions found at"
+? "Simon Kershaw's " + Chr(34) + "KEEPING THE FEAST" + Chr(34)
+? "http://www.oremus.org/liturgy/etc/ktf/app/easter.html"
+?
+Exit 1
