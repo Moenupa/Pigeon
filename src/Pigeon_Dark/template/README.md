@@ -2,8 +2,7 @@
 
 A dark theme for [TODO:AppName](TODO:AppWebsite)
 
-![Screenshot](./screenshot.pngTODO:AddDemoPNG)
-Screenshot info: Notepad++ v7.9.1, Dec 26th, 2020.
+![Screenshot](./screenshot.pngTODO:AddDemoPNG "TODO:Screnshot info: versioninfo, Date, Year")
 
 ## Install
 

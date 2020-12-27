@@ -38,7 +38,7 @@
             <WordsStyle name="COMMENT DOC KEYWORD ERROR" styleID="18" fgColor="754242" bgColor="1E1E1E" fontName="" fontStyle="2" fontSize="" />
         </LexerType>
         <LexerType name="rust" desc="Rust" ext="">
-            <WordsStyle name="WHITESPACE"           styleID="0" fgColor="808080" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="WHITESPACE"           styleID="0" fgColor="666666" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
             <WordsStyle name="BLOCK COMMENT"        styleID="1" fgColor="666666" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
             <WordsStyle name="LINE COMMENT"         styleID="2" fgColor="666666" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
             <WordsStyle name="BLOCK DOC COMMENT"    styleID="3" fgColor="567542" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
@@ -447,7 +447,7 @@
             <WordsStyle name="OPERATOR"             styleID="9" fgColor="A6A6A6" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
         </LexerType>
         <LexerType name="latex" desc="LaTeX" ext="">
-            <WordsStyle name="WHITE SPACE"          styleID="0" fgColor="D4D4D4" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="WHITE SPACE"          styleID="0" fgColor="666666" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
             <WordsStyle name="COMMAND"              styleID="1" fgColor="66A3CC" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
             <WordsStyle name="TAG OPENING"          styleID="2" fgColor="80CCFF" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
             <WordsStyle name="MATH INLINE"          styleID="3" fgColor="CCB866" bgColor="1E1E1E" fontName="" fontStyle="0" fontSize="" />
@@ -626,7 +626,7 @@
         <WidgetStyle name="Fold"                    styleID="0" fgColor="D4D4D4" bgColor="1E1E1E"/>
         <WidgetStyle name="Fold active"             styleID="0" fgColor="FF8080" bgColor="D4D4D4"/>
         <WidgetStyle name="Fold margin"             styleID="0" fgColor="666666" />
-        <WidgetStyle name="White space symbol"      styleID="0" fgColor="FFE680" />
+        <WidgetStyle name="White space symbol"      styleID="0" fgColor="666666" />
         <WidgetStyle name="Current line background colour" styleID="0" bgColor="2E2E2E" />
         <WidgetStyle name="Selected text colour"    styleID="0" bgColor="3E3E3E" />
         <WidgetStyle name="Edge colour"             styleID="0" fgColor="D4D4D4" />
