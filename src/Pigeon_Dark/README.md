@@ -104,4 +104,4 @@ If the theme has not been initialized for that environment, submit an **issue** 
 
 [60]: https://singlecolorimage.com/get/2E2E2E/256x32.png "BRIGHT_BLACK2:2E2E2E"
 
-[100]: 
+[100]: https://github.com/Moenupa/Pigeon/blob/master/res/demo/windows_terminal.png "DEMO:WINDOWS_TERMINAL"

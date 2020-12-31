@@ -26,6 +26,7 @@
     "editor.tabCompletion": "on",
     "editor.wordWrap": "on",
     "editor.wordWrapColumn": 100,
+
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "files.autoGuessEncoding": true,
@@ -41,7 +42,8 @@
         "MD025": {
             "front_matter_title": ""
         },
-        "MD028": false
+        "MD028": false,
+        "no-inline-html": false
     },
     "markdownlint.customRules": [
         "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
@@ -67,7 +69,130 @@
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.preferredDarkColorTheme": "Visual Studio Dark",
     "workbench.preferredLightColorTheme": "Visual Studio Light",
+    "editor.tokenColorCustomizations": {
+        "keywords": "#66A3CC",
+        "types": "#66A3CC",
+        "[Visual Studio Dark]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword.operator",
+                    "settings": {
+                        "foreground": "#A6A6A6"
+                    }
+                },
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#66A3CC",
+                    }
+                },
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#D4D4D466",
+                    }
+                },
+                {
+                    "scope": "comment.block.documentation",
+                    "settings": {
+                        "foreground": "#567542",
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#CCB866",
+                    }
+                },
+                {
+                    "scope": "string.quoted",
+                    "settings": {
+                        "foreground": "#8FCC66",
+                    }
+                },
+                {
+                    "scope":"support.function",
+                    "settings": {
+                        "foreground": "#80CCFF",
+                    }
+                },
+                {
+                    "scope": "token.info-token",
+                    "settings": {
+                        "foreground": "#6796E6"
+                    }
+                },
+                {
+                    "scope": "token.warn-token",
+                    "settings": {
+                        "foreground": "#FFE680"
+                    }
+                },
+                {
+                    "scope": "token.error-token",
+                    "settings": {
+                        "foreground": "#FF8080"
+                    }
+                },
+                {
+                    "scope": "token.debug-token",
+                    "settings": {
+                        "foreground": "#E680FF"
+                    }
+                }
+            ]
+        }
+    },
+    // helloworld
     "workbench.colorCustomizations": {
+        "editor.background": "#1E1E1E", 
+        "editor.foreground": "#D4D4D4",
+        // find highlight
+        "editor.findMatchBackground": "#FF808066",
+        "editor.findMatchBorder": "#00000000",
+        "editor.findMatchHighlightBackground": "#FF80803E",
+        "editor.findMatchHighlightBorder": "#FF808066",
+        "editor.findRangeHighlightBackground": "#FF80803E",
+        "editor.findRangeHighlightBorder": "#FF808066",
+        // current line highlight
+        "editor.lineHighlightBackground": "#D4D4D40E",
+        "editor.lineHighlightBorder": "#D4D4D41E",
+        // selection highlight
+        "editor.inactiveSelectionBackground": "#D4D4D43E",
+        "editor.selectionBackground": "#D4D4D466",
+        "editor.selectionForeground": "#EFEFEF",
+        "editor.selectionHighlightBackground": "#66A3CC3E",
+        "editor.selectionHighlightBorder": "#00000000",
+        "editor.hoverHighlightBackground": "#66A3CC3E",
+        // cursor highlight
+        "editorCursor.foreground": "#EFEFEF",
+        // folding highlight
+        "editor.foldBackground": "#8FCC661E",
+        
+        "editorHoverWidget.foreground": "#D4D4D4",
+        "editorHoverWidget.background": "#2E2E2E",
+        "editorHoverWidget.border": "#3E3E3E",
+
+        "editorError.background": "#FF808066",
+        "editorError.border": "#00000000",
+        "editorError.foreground": "#FF8080",
+        "editorWarning.background": "#FFB28066",
+        "editorWarning.border": "#00000000",
+        "editorWarning.foreground": "#FFB280",
+        
+        "editorLineNumber.foreground": "#D4D4D43E",
+        "editorLineNumber.activeForeground": "#D4D4D4A6",
+        
+        "editorBracketMatch.background": "#CCB86666",
+        "editorBracketMatch.border": "#1E1E1E3E",
+        
+        "editorIndentGuide.activeBackground": "#666666",
+        "editorIndentGuide.background": "#3E3E3E",
+        
+        "editorOverviewRuler.background": "#1E1E1E",
+        "editorOverviewRuler.errorForeground": "#FF8080",
+        "editorOverviewRuler.warningForeground": "#FFB280",
+
         "terminal.ansiBlack": "#1E1E1E",
         "terminal.ansiBlue": "#66A3CC",
         "terminal.ansiCyan": "#66CCA3",
@@ -83,9 +208,52 @@
         "terminal.ansiBrightMagenta": "#E680FF",
         "terminal.ansiBrightRed": "#FF8080",
         "terminal.ansiBrightWhite": "#EFEFEF",
-        "terminal.ansiBrightYellow": "#FFE680"
+        "terminal.ansiBrightYellow": "#FFE680",
+
     },
     "yaml.schemas": {
         "file:///toc.schema.json": "/toc\\.yml/i"
     },
+    "todohighlight.isEnable": true,
+    "todohighlight.isCaseSensitive": true,
+    "todohighlight.keywords": [
+        "REVIEW",
+        "TODO",
+        {
+            "text": "NOTE",
+            "backgroundColor": "#999999D4",
+            "overviewRulerColor": "#999999",
+        },
+        {
+            "text": "FIXME",
+            "backgroundColor": "#80FFCCD4",
+            "overviewRulerColor": "#66CCA3",
+        },
+        {
+            "text": "DEBUG",
+            "backgroundColor": "#80FFCCD4",
+            "overviewRulerColor": "#66CCA3",
+        }
+    ],
+    "todohighlight.defaultStyle": {
+        "color": "#1E1E1E",
+        "backgroundColor": "#FFE680D4",
+        "overviewRulerColor": "#CCB866",
+        "border": "0px",
+        "borderRadius": "2px",
+        "isWholeLine": false,
+    },
+    "todohighlight.exclude": [
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/dist/**",
+        "**/build/**",
+        "**/.vscode/**",
+        "**/.github/**",
+        "**/_output/**",
+        "**/*.min.*",
+        "**/*.map",
+        "**/.next/**"
+    ],
+    
 }
